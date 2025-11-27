@@ -6,8 +6,10 @@ class QRScannerPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [Center(child: Text("data",style: TextStyle(fontWeight: FontWeight.w800,fontSize: 50),))],
+      body: SafeArea(
+        child: Column(
+          children: [Center(child: Text("data",style: TextStyle(fontWeight: FontWeight.w800,fontSize: 50),))],
+        ),
       ),
     );
   }
