@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:qr_code_scanner_plus/qr_code_scanner_plus.dart';
 
+import '../notification/notification.dart';
+
 class QRScannerPage extends StatefulWidget {
   const QRScannerPage({super.key});
 
@@ -22,8 +24,23 @@ class _QRScanPageState extends State<QRScannerPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('QR Scanner')),
+    final scheme = Theme
+        .of(context)
+        .colorScheme;
+    return Scaffold(backgroundColor: scheme.primary,
+      appBar: AppBar(title: const Text(
+        'Scan QR code', style: TextStyle(color: Colors.white),),
+        centerTitle: true,
+        backgroundColor: scheme.primary,
+        actions: [
+          IconButton(
+            icon: Icon(Icons.notifications_none, color: Colors.white,),
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => NotificationView(),));
+            },
+          ),
+        ],),
       body: Column(
         children: [
           Expanded(
@@ -34,8 +51,10 @@ class _QRScanPageState extends State<QRScannerPage> {
                   key: qrKey,
                   onQRViewCreated: _onQRViewCreated,
                   overlay: QrScannerOverlayShape(
-                    borderColor: Theme.of(context).primaryColor,
-                    borderRadius: 10,
+                    borderColor: Theme
+                        .of(context)
+                        .primaryColor,
+                    borderRadius: 5,
                     borderLength: 30,
                     borderWidth: 10,
                     cutOutSize: 250,
@@ -58,7 +77,7 @@ class _QRScanPageState extends State<QRScannerPage> {
                       });
                     },
                   ),
-                ),//كود الفلااش
+                ), //كود الفلااش
               ],
             ),
           ),

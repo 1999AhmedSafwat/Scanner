@@ -8,9 +8,11 @@ class DetailsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xff2490A9),
+        backgroundColor:scheme.primary ,
         centerTitle: true,
         title: Text(
           "Details",
@@ -42,7 +44,7 @@ class DetailsView extends StatelessWidget {
                 width: 275,
                 height: 52,
                 decoration: BoxDecoration(
-                    color: Color(0xff2490A9),
+                    color: scheme.primary ,
                     borderRadius: BorderRadius.circular(8)),
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -71,7 +73,7 @@ class DetailsView extends StatelessWidget {
               GestureDetector(onTap: () {
                Navigator.push(context, MaterialPageRoute(builder: (context) => QRScannerPage(),));
               }, child: Text("Repeat Scan",style: TextStyle(fontSize: 16,fontWeight: FontWeight.w600,color: Color(0xffff6666)),)),SizedBox(width: 4,),
-                Image.asset("assets/images/close-circle.png"),
+                Image.asset("assets/images/closecircle.png"),
 
             ],),
             SizedBox(height: 12,),
