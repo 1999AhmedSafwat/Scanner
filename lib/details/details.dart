@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 
 import '../barcode/view.dart';
+import '../utils/images.dart';
 
 class DetailsView extends StatelessWidget {
   const DetailsView({super.key});
@@ -50,7 +51,7 @@ class DetailsView extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: Column(crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
+                      const Text(
                         "Your Truck Here!",
                         style: TextStyle(fontWeight: FontWeight.w600, fontSize: 12,color: Colors.white),
                       ),
@@ -64,7 +65,7 @@ class DetailsView extends StatelessWidget {
                 ),
               ),),
             SizedBox(height: 12,),
-            Center(child: Container(child: Image.asset("assets/images/Truck1.png",height: 141,width: 307,fit: BoxFit.cover,),)),
+            Center(child: Container(child: Image.asset(Images.truckIcon,height: 141,width: 307,fit: BoxFit.cover,),)),
             SizedBox(height: 12,),
 
             Row(
