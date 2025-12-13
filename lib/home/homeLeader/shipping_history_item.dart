@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../utils/images.dart';
+
 class ShippingHistoryItem extends StatelessWidget {
   final String trackingNumber;
   final String date;
@@ -35,7 +37,7 @@ class ShippingHistoryItem extends StatelessWidget {
             color: statusBg,
             borderRadius: BorderRadius.circular(10),
           ),
-          child: Image.asset("assets/images/box.png"),
+          child: Image.asset(Images.boxIcon),
         ),
         const SizedBox(width: 16),
 

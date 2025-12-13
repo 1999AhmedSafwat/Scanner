@@ -33,7 +33,7 @@ class HomeLeaderView extends StatelessWidget {
               leading: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Image.asset(
-                  "assets/images/logo.png",
+                  Images.logo,
                   fit: BoxFit.contain,
                 ),
               ),
