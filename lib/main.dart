@@ -1,7 +1,9 @@
 
-
 import 'package:flutter/material.dart';
+import 'barcode/view.dart';
+import 'details/details.dart';
 import 'home/homeLeader/homeLeader.dart';
+import 'navigator/navigator.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,7 +22,7 @@ class MyApp extends StatelessWidget {
           seedColor: const Color(0xff2490A9),
         ),
       ),
-      home:  HomeleaderView(),
+      home:   DetailsView(),
     );
   }
 }
@@ -29,7 +31,7 @@ class MyApp extends StatelessWidget {
 
 
 //
-// import 'package:architecture/tes/v.dart';
+// import 'package:architecture/navigator/navigator.dart';
 // import 'package:flutter/cupertino.dart';
 // import 'package:flutter/material.dart';
 //

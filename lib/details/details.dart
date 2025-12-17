@@ -2,9 +2,10 @@
 import 'package:flutter/material.dart';
 
 import '../barcode/view.dart';
+import '../navigator/navigator.dart';
 
 class DetailsView extends StatelessWidget {
-  const DetailsView({super.key});
+ // const DetailsView({super.key, required plat_number, required plate_letters, required brand, required color});
 
   @override
   Widget build(BuildContext context) {
@@ -28,9 +29,13 @@ class DetailsView extends StatelessWidget {
             ),
           )
         ],
-        leading: Icon(
-          Icons.arrow_back_ios_rounded,
-          color: Colors.white,
+        leading: GestureDetector(onTap: () {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => NavigatorView(),));
+        },
+          child: Icon(
+            Icons.arrow_back_ios_rounded,
+            color: Colors.white,
+          ),
         ),
         toolbarHeight: 50,
       ),
@@ -64,7 +69,7 @@ class DetailsView extends StatelessWidget {
                 ),
               ),),
             SizedBox(height: 12,),
-            Center(child: Container(child: Image.asset("assets/images/Truck1.png",height: 141,width: 307,fit: BoxFit.cover,),)),
+            Center(child: Container(child: Image.asset("assets/images/truck.png",height: 141,width: 307,fit: BoxFit.cover,),)),
             SizedBox(height: 12,),
 
             Row(

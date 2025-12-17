@@ -15,7 +15,7 @@ class HomeleaderView extends StatelessWidget {
             return [
               SliverAppBar(
                 backgroundColor: scheme.primary,
-                expandedHeight: 250,
+                expandedHeight: 350,
                 floating: true,
                 pinned: true,
                 title: Text(
@@ -47,55 +47,56 @@ class HomeleaderView extends StatelessWidget {
                 shadowColor: scheme.primary,
                 flexibleSpace: FlexibleSpaceBar(
                   background: Container(
-                    padding: EdgeInsets.all(16),
+
                     child: Padding(
-                      padding: const EdgeInsets.all(20),
-                      child: SafeArea(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Track your truck",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 24,
-                                  fontWeight: FontWeight.w600),
-                            ),
-                            Text(
-                              "Enter your parcel tracking number to track your truck live",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w400),
-                            ),
-                            SizedBox(
-                              height: 24,
-                            ),
-                            Container(
-                              height: 53,
-                              width: 335,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(8),
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      child: Column(
+
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [SizedBox(height: 100,),
+                          Text(
+                            "Track your truck",
+                            style: TextStyle(
                                 color: Colors.white,
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    vertical: 18, horizontal: 16),
-                                child: Row(
-                                  children: [
-                                    Container(
-                                      width: 20,
-                                      height: 20,
-                                      child: Image.asset(
-                                          "assets/images/iconcircle.png"),
-                                    ),
-                                TextField(decoration:InputDecoration(hintText: "InputDecoration") ,)  ],
-                                ),
-                              ),
-                            )
-                          ],
-                        ),
+                                fontSize: 24,
+                                fontWeight: FontWeight.w600),
+                          ),
+                          Text(
+                            "Enter your parcel tracking number to track your truck live",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 14,
+                                fontWeight: FontWeight.w400),
+                          ),
+                          SizedBox(height: 20),
+                          // Container(
+                          //   height: 30,
+                          //   width: 335,
+                          //   decoration: BoxDecoration(
+                          //     borderRadius: BorderRadius.circular(8),
+                          //     color: Colors.white,
+                          //   ),
+                          //   child: Padding(
+                          //     padding: const EdgeInsets.symmetric(
+                          //         vertical: 18, horizontal: 16),
+                          //     child: Row(
+                          //       children: [
+                          //         Container(
+                          //           width: 20,
+                          //           height: 20,
+                          //           child: Image.asset(
+                          //               "assets/images/iconcircle.png"),
+                          //         ),
+                          //         TextField(
+                          //           decoration: InputDecoration(
+                          //               hintText: "InputDecoration"),
+                          //         )
+                          //       ],
+                          //     ),
+                          //   ),
+                          // )
+                        ],
                       ),
                     ),
                   ),
@@ -103,6 +104,12 @@ class HomeleaderView extends StatelessWidget {
               ),
             ];
           },
+
+
+
+
+
+
 
 
 

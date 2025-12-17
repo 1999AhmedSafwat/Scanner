@@ -1,6 +1,8 @@
+import 'package:architecture/barcode/sucess.dart';
 import 'package:flutter/material.dart';
 import 'package:qr_code_scanner_plus/qr_code_scanner_plus.dart';
-
+import 'dart:convert';
+import '../details/details.dart';
 import '../notification/notification.dart';
 
 class QRScannerPage extends StatefulWidget {
@@ -15,6 +17,19 @@ class _QRScanPageState extends State<QRScannerPage> {
   QRViewController? controller;
   String scannedData = '';
   bool isFlashOn = false;
+  bool isScanned = false;
+  bool isCameraActive = true;
+  Map<String, dynamic>? parseQr(dynamic data) {
+    if (data is Map<String, dynamic>) {
+      if (data.containsKey('plat_number') &&
+          data.containsKey('plate_letters') &&
+          data.containsKey('brand') &&
+          data.containsKey('color')) {
+        return data;
+      }
+      return null;
+    }
+  }
 
   @override
   void dispose() {
@@ -24,23 +39,25 @@ class _QRScanPageState extends State<QRScannerPage> {
 
   @override
   Widget build(BuildContext context) {
-    final scheme = Theme
-        .of(context)
-        .colorScheme;
-    return Scaffold(backgroundColor: scheme.primary,
-      appBar: AppBar(title: const Text(
-        'Scan QR code', style: TextStyle(color: Colors.white),),
+    final scheme = Theme.of(context).colorScheme;
+    return Scaffold(
+      backgroundColor: scheme.primary,
+      appBar: AppBar(
+        title: const Text('Scan QR code', style: TextStyle(color: Colors.white)),
         centerTitle: true,
         backgroundColor: scheme.primary,
         actions: [
           IconButton(
-            icon: Icon(Icons.notifications_none, color: Colors.white,),
+            icon: Icon(Icons.notifications_none, color: Colors.white),
             onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => NotificationView(),));
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => NotificationView()),
+              );
             },
           ),
-        ],),
+        ],
+      ),
       body: Column(
         children: [
           Expanded(
@@ -51,9 +68,7 @@ class _QRScanPageState extends State<QRScannerPage> {
                   key: qrKey,
                   onQRViewCreated: _onQRViewCreated,
                   overlay: QrScannerOverlayShape(
-                    borderColor: Theme
-                        .of(context)
-                        .primaryColor,
+                    borderColor: Theme.of(context).primaryColor,
                     borderRadius: 5,
                     borderLength: 30,
                     borderWidth: 10,
@@ -77,7 +92,7 @@ class _QRScanPageState extends State<QRScannerPage> {
                       });
                     },
                   ),
-                ), //كود الفلااش
+                ),
               ],
             ),
           ),
@@ -90,6 +105,18 @@ class _QRScanPageState extends State<QRScannerPage> {
               ),
             ),
           ),
+          ElevatedButton(
+            onPressed: () async {
+              if (controller != null) {
+                await controller!.resumeCamera();
+                setState(() {
+                  isCameraActive = true;
+                  scannedData = '';
+                });
+              }
+            },
+            child: const Text('Try again'),
+          ),
         ],
       ),
     );
@@ -97,10 +124,47 @@ class _QRScanPageState extends State<QRScannerPage> {
 
   void _onQRViewCreated(QRViewController controller) {
     this.controller = controller;
-    controller.scannedDataStream.listen((scanData) {
-      setState(() {
-        scannedData = scanData.code ?? '';
-      });
+    controller.scannedDataStream.listen((scanData) async {
+      if (!isCameraActive) return;
+
+      final code = scanData.code ?? '';
+      if (code.isEmpty) return;
+
+      final qrData = parseQr(code);
+
+      if (qrData != null) {
+        isScanned = true;
+        isCameraActive = false;
+        await controller.pauseCamera();
+
+        setState(() {
+          scannedData = code;
+        });
+
+
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => DetailsView(
+            // plat_number: qrData['plat_number'],
+            // plate_letters: qrData['plate_letters'],
+            // brand: qrData['brand'],
+            // color: qrData['color'],
+          )),
+        );
+      } else {
+        isCameraActive = false;
+        await controller.pauseCamera();
+
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Center(child: Text('Failed ❌')),
+            backgroundColor: Colors.red,
+            duration: Duration(seconds: 2),
+          ),
+        );
+      }
     });
   }
 }
+
+
