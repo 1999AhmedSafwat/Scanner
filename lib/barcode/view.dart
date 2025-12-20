@@ -19,16 +19,23 @@ class _QRScanPageState extends State<QRScannerPage> {
   bool isFlashOn = false;
   bool isScanned = false;
   bool isCameraActive = true;
-  Map<String, dynamic>? parseQr(dynamic data) {
-    if (data is Map<String, dynamic>) {
-      if (data.containsKey('plat_number') &&
-          data.containsKey('plate_letters') &&
-          data.containsKey('brand') &&
-          data.containsKey('color')) {
-        return data;
+  Map<String, dynamic>? parseQr(String code) {
+    try {
+      final decoded = jsonDecode(code);
+
+      if (decoded is Map<String, dynamic>) {
+        if (decoded.containsKey('plate_number') &&
+            decoded.containsKey('plate_letters') &&
+            decoded.containsKey('brand') &&
+            decoded.containsKey('color')) {
+          return decoded;
+        }
       }
+    } catch (e) {
       return null;
     }
+    return null;
+
   }
 
   @override
@@ -99,9 +106,12 @@ class _QRScanPageState extends State<QRScannerPage> {
           Expanded(
             flex: 1,
             child: Center(
-              child: Text(
-                scannedData.isEmpty ? 'Scan a QR code' : 'Result: $scannedData',
-                style: const TextStyle(fontSize: 18),
+              child: Padding(
+                padding: const EdgeInsets.all(5.0),
+                child: Text(
+                  scannedData.isEmpty ? 'Scan a QR code' : 'Result: $scannedData',
+                  style: const TextStyle(fontSize: 18),
+                ),
               ),
             ),
           ),
@@ -145,10 +155,10 @@ class _QRScanPageState extends State<QRScannerPage> {
         Navigator.push(
           context,
           MaterialPageRoute(builder: (context) => DetailsView(
-            // plat_number: qrData['plat_number'],
-            // plate_letters: qrData['plate_letters'],
-            // brand: qrData['brand'],
-            // color: qrData['color'],
+            plate_number: qrData['plate_number'],
+            plate_letters: qrData['plate_letters'],
+            brand: qrData['brand'],
+            color: qrData['color'],
           )),
         );
       } else {

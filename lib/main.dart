@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
           seedColor: const Color(0xff2490A9),
         ),
       ),
-      home:   DetailsView(),
+      home:   DetailsView(plate_number: '', plate_letters: '', brand: '', color: '',),
     );
   }
 }

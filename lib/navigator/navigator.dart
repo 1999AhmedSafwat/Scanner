@@ -28,8 +28,7 @@ class _NavigatorViewState extends State<NavigatorView> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: GestureDetector(
         onTap: () {
-          Navigator.push(
-            context,
+          Navigator.push(context,
             MaterialPageRoute(builder: (context) => QRScannerPage()),
           );
         },
