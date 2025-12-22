@@ -1,8 +1,9 @@
+import 'package:architecture/setting/setting.dart';
 import 'package:flutter/material.dart';
 
 import '../barcode/view.dart';
 import '../home/homeLeader/homeLeader.dart';
-import '../setting/setting.dart';
+
 
 class NavigatorView extends StatefulWidget {
   const NavigatorView ({super.key});
@@ -14,8 +15,8 @@ class _NavigatorViewState extends State<NavigatorView> {
   int currentIndex = 0;
 
   List<Widget> pages = [
-    HomeleaderView(),
-    SettingView(),
+    const HomeLeaderView(),
+    const SettingView()
   ];
 
   @override
@@ -38,7 +39,7 @@ class _NavigatorViewState extends State<NavigatorView> {
           decoration: BoxDecoration(
             color: scheme.primary,
             shape: BoxShape.circle,
-            boxShadow: [
+            boxShadow: const [
               BoxShadow(
                 color: Colors.black38,
                 blurRadius: 15,
@@ -57,7 +58,7 @@ class _NavigatorViewState extends State<NavigatorView> {
 
       bottomNavigationBar: BottomAppBar(
         height: 80,
-        shape: CircularNotchedRectangle(),
+        shape: const CircularNotchedRectangle(),
         notchMargin: 25,
         child: Container(
           height: 60,

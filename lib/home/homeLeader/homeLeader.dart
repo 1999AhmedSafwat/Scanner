@@ -19,7 +19,8 @@ class HomeLeaderView extends StatelessWidget {
               backgroundColor: scheme.primary,
               expandedHeight: 250,
               pinned: true,
-              floating: false, // better behavior with NestedScrollView
+              floating: false,
+              // better behavior with NestedScrollView
               toolbarHeight: 50,
               shadowColor: scheme.primary,
               title: const Text(
@@ -39,11 +40,13 @@ class HomeLeaderView extends StatelessWidget {
               ),
               actions: [
                 IconButton(
-                  icon: const Icon(Icons.notifications_none, color: Colors.white),
+                  icon:
+                      const Icon(Icons.notifications_none, color: Colors.white),
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (_) => const NotificationView()),
+                      MaterialPageRoute(
+                          builder: (_) => const NotificationView()),
                     );
                   },
                 )
@@ -80,15 +83,13 @@ class HomeLeaderView extends StatelessWidget {
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(12),
                           ),
-                          child: Row(
+                          child: const Row(
                             children: [
-                              Image.asset(
-                                Images.inputFieldSuffixIcon,
-                                height: 20,
-                                width: 20,
+                              Icon(
+                                Icons.search,
                               ),
-                              const SizedBox(width: 10),
-                              const Expanded(
+                              SizedBox(width: 10),
+                              Expanded(
                                 child: TextField(
                                   decoration: InputDecoration(
                                     hintText: "Tracking number",
@@ -110,7 +111,8 @@ class HomeLeaderView extends StatelessWidget {
         body: ListView.separated(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
           keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
-          itemCount: 1 + 10, // 1 header + 10 items
+          itemCount: 1 + 10,
+          // 1 header + 10 items
           separatorBuilder: (_, index) {
             if (index == 0) return const SizedBox(height: 0);
             return const SizedBox(height: 12);
