@@ -29,8 +29,6 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   flutter_zxing: ^2.2.1
-  qr_flutter: ^4.0.0
-  image_picker: ^1.2.1
   permission_handler: ^11.3.0
 
   http: ^1.6.0
