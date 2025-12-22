@@ -1,4 +1,3 @@
-import 'package:architecture/barcode/sucess.dart';
 import 'package:flutter/material.dart';
 import 'package:qr_code_scanner_plus/qr_code_scanner_plus.dart';
 import 'dart:convert';

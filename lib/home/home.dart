@@ -11,17 +11,21 @@ class SendData extends StatelessWidget {
         ),
         body: Container(
           height: MediaQuery.of(context).size.height,
-          decoration: BoxDecoration(),
+          decoration: const BoxDecoration(),
           child: Padding(
             padding: const EdgeInsets.symmetric(
               horizontal: 20,
             ),
             child: ListView(
               children: [
-                SizedBox(height: 40),
-                Text("Shipping History",
-                    style: TextStyle(
-                        fontSize: 18, fontWeight: FontWeight.w700)),
+                const SizedBox(height: 40),
+                const Text(
+                  "Shipping History",
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
                 SizedBox(height: 24),
                 Divider(),
                 SizedBox(height: 16),
@@ -104,8 +108,7 @@ class SendData extends StatelessWidget {
                         ),
                         SizedBox(height: 4),
                         Padding(
-                          padding:
-                              const EdgeInsets.symmetric(horizontal: 20),
+                          padding: const EdgeInsets.symmetric(horizontal: 20),
                           child: Text(
                             "To",
                             style: TextStyle(
@@ -127,8 +130,7 @@ class SendData extends StatelessWidget {
                               "5678 Maple Avenue Seattle, WA 98101",
                               overflow: TextOverflow.ellipsis,
                               style: TextStyle(
-                                  fontWeight: FontWeight.w400,
-                                  fontSize: 13),
+                                  fontWeight: FontWeight.w400, fontSize: 13),
                             ),
                           ],
                         ),
@@ -143,7 +145,9 @@ class SendData extends StatelessWidget {
                                   color: Color(0xffBaBFc5)),
                             ),
                             SizedBox(width: 16),
-                            Container(height: 24, width: 72,
+                            Container(
+                              height: 24,
+                              width: 72,
                               decoration: BoxDecoration(
                                   color: Color(0xffE9FFE5),
                                   borderRadius: BorderRadius.circular(8)),
