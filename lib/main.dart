@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'barcode/view.dart';
+import 'details/details.dart';
 import 'home/homeLeader/homeLeader.dart';
+import 'navigator/navigator.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +21,7 @@ class MyApp extends StatelessWidget {
           seedColor: const Color(0xff2490A9),
         ),
       ),
-      home:  const HomeLeaderView(),
+      home:   DetailsView(plate_number: '', plate_letters: '', brand: '', color: '',),
     );
   }
 }
